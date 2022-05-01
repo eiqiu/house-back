@@ -57,7 +57,6 @@ public class ImageServiceImpl implements ImageSerice {
                 e.printStackTrace();
             }
         }
-
         return resultstr;
     }
 }
