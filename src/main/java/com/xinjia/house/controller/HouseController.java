@@ -4,6 +4,7 @@ import com.xinjia.house.pojo.Category;
 import com.xinjia.house.pojo.House;
 import com.xinjia.house.service.HouseService;
 import com.xinjia.house.service.ImageSerice;
+import com.xinjia.house.vo.House.HouseVo;
 import com.xinjia.house.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,6 +28,9 @@ public class HouseController {
     @RequestMapping(value = "/addHouse", method = RequestMethod.POST)
     public Result<String> addHouse(@RequestPart("house") House house,@RequestPart("file")MultipartFile[] files){
         System.out.println(house);
+        for (MultipartFile multipartFile:files) {
+            System.out.println(multipartFile);
+        }
         return Result.success(200,"成功",imageSerice.uploadImages(files));
     }
 
@@ -34,5 +38,12 @@ public class HouseController {
     @RequestMapping(value = "/getCategorys", method = RequestMethod.POST)
     public Result<List<Category>> getCategorys(){
         return Result.success(200,"成功获取到分类信息", houseService.getCategories());
+    }
+
+    @ApiOperation("获取编辑房屋")
+    @RequestMapping(value = "getHouse", method = RequestMethod.POST)
+    public Result<HouseVo> getHouseByID(String houseID){
+        HouseVo houseVo = new HouseVo();
+        return Result.success(200,"成功",houseVo);
     }
 }

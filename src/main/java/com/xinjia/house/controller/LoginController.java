@@ -21,7 +21,7 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public @ResponseBody Result<User> userLogin(@RequestBody UserVo userVo){
         System.out.println(userVo);
-        User user = new User(1,"张三","15988988787","男",21,"烟台莱山区","123456","test");
+        User user = new User(1,"15066699887","张三","15988988787","男",21,"山东省,烟台市,莱山区,山东工商学院","123456","test");
         return Result.success(200,"成功",user);
     }
     /**

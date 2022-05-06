@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     private int user_id;
+    private String user_account;
     private String user_name;
     private String user_tel;
     private String user_sex;
