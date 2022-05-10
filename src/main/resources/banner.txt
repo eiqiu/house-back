@@ -1,78 +1,28 @@
-                                                                                   iii                                       
-                                                                 ii         ,iiiiiiiii                                       
-                                                             ,iiiiii       iiiiiiiiiiiii                                     
-                                                            iiiiiiiii  iiiiiiiiiiiiiiiii                                     
-                                                             iiiiiiiiiiiiiiiiiiiiiiiiiiiii                                   
-                                                             ,iiiiiiiiiiiiiiiiiiiiiiiiiii                                    
-                                                   iiiiii@@@@iiiiiiiiiiiiiiiiiiiiiiiiiii                                     
-                                             ii@@@@@@@@@@@@@@@@@@@@@@@@iiiiiiiiiiiiiiii                                      
-                                         iii@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@iiiiiiiiiiiiiiiii                                
-                                      ii@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@iiiiiiiiiiiii                               
-                                  ii@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@iiiiiiiiiiiii                              
-                               ,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@iiiiii@ii@@@@@@@@@@@@@@@iiiiiiiii                               
-                              i@@@@@@@@@@@@@@@@@@@@@@@@@@ii            ii@@@@@@@@@@@@@iiiii                                  
-                            ii@@@@@@@@@@@@@@@@@@@@@@iii                  i@@@@@@@@@@@@@@ii                                   
-                           i@@@@@@@@@@@@@@@@@iiiii                        i@@@@@@@@@@@@@@@@                                  
-                          iiiiii@@@@@@@@@@iii                             i@@@@@@@@@@@@@@@@i                                 
-                         ii,,,,                                           i@@@@@@@@@@@@@@@@@                                 
-                        ,i,,,                       i                     i@@@@@@@@@@@@@@@@@i                  ,  i,         
-                        ,,,,          i             i@i,                  i@@@@@@@@@iiii@@i@i                ,     ,         
-                       ,,,,         i@@             i@@@ii                ii@@@@@@,,,,,,, i@i              ,  ,    , ,       
-                       i,,,        ,@@@i,          ii@ii                  ,@@@@@@i,,,,,,,,,ii             i   ,    i         
-                       i,,,           iiii                 iiiiii         ,@@@@@@i,,,,,,,,,ii                 i       ,      
-                       i,,,                           iiiiiiiii  i         @@@@@iii,,,,,,,,ii            ,      i      ii    
-                       ,,,,                          iii iiiii   i         i@@@@@ii,,,,,,,,i             ,       i        i  
-                        ,,,,   iiiiiiii             ii iiiiii  i i         i@@@@@iii,,,,,iii             i               ,   
-                        i,,,,  i   iiiiiii          i iiiiiiiiiiii         i@@@@@i,,,,,i@@@           i    ,              ,i 
-                         i,,   i iiii  iiii         i  iiiiiiiiiii         i@@@@@@iii@@@@ii        i         ,             , 
-                          ,,,  iiiiiiiiiiiii        iiiiiiiiiiiiii         i@@@@@@@@@@@@@@i      i             ,        i    
-                           ,,, iiiiiiiiiiiiii   ,                          i@@@@@@@@@@@@iii   i                 , ,,,,i      
-                            ,,,                u,,u                        i@@@@@@@@i@@iiiii                    ,,,          
-                            ,,,,                 i     ii                  i@@@@@@@iiiiiii,                    ,,            
-                             i,,                     iiii                   i@@@@iiiiiiii,                    ,i             
-                             i,,             iiiii,iiiiii                   i@iiiiiiiiii,                   ,i               
-             ,                ,,               iiiiiiiiii                   iiiiiiiiii,,,                 ,,                 
-     i,,i  ,   i              i,,                iiiiiiii                   ,iiiiiiiii,,                ,,,                  
-    i      i                   i,,,                iiiiii               ,,,   iiiiiii,,,              ,i                     
-     i      ,     i             i,,,,                iiii        ,,,,,,,,,     iiiii,,,              ,,                      
-   ,i,,     i      i               ii,,,                  ,,,,,,,,,,,,,,,     iiiiii,,              i                        
-,           i       ,i,,,,,,,,, ,,,iiiiiiiiiiiiiii   ,,,,,,,,,,,,,,,, ,,,   ,iiiiiii,,                                       
-,            ,       ,                 iiiiiiiii     ,,,,,,,,,,,,,,,,,,,   ,iiiiiii,,,           i,,                         
-   i                 ,                   iiiiiiii    ,,,,,,,,,,,,,,,,,,      iiiiiii,,,           ,,                         
-  ,                  ,                   iiiiiiiiii ,,,,,,,,,,,,,,,,,,,      ,iiiiiiii,,         ,i                          
-  ,   i             ,                   ,iiiiiiii   ,,,,,,,,,,,,,,, ,,,      iiiiiiiiiiii,    iiii,                          
-     i     i      ,,                     iiiiiii    ,,,,,,,,,,,, ,,,,,      iiiiiiiiiiiiiiiiiiiiii                           
-      iii    iiii i,                     ,iiiiii    ,,,,,,,,,,,,,,,,,,    ,iiiiiiiiiiiiiiiiiiiiii                            
-                     i,,,,,,,,,,,,        iiiiii    ,,,,,,,,,,,,,,,,,,   iiiiiiiiiiiiiiiiiiiiiii                             
-                             iiii,,,,,,,,,iiiiiii   ,,,,,,,,,,,,,,,,,,  iiiiiiiiiiiiiiiiiiiiiii                              
-                                    ,i,,,,iiiiiiii  ,,,,,,,,,,,,,,,,,, iiiiiiiiiiiiiiiiiiiiiii                               
-                                          ,iiiiiiii ,,,,,,,,,,,,,,,,,,iiiiiiiiiiiiiiiiiiiiiii                                
-                                           iiiiiiiiii,,,,,,,,,,,,,,,,,iiiiiiiiiiiiiiiiiiiiiiiiii                             
-                                           iiiiiiiiii,,,,,,,,,,,,,,,,,iiiiiiiiiiiiiiiiiiiiiiiiiiii,                          
-                                            iiiiiiiiii,,,,,,,,,,,,,,,,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii                        
-                                             iiiiiiiiii,,,,,,,,,,,,,,,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii                     
-                                              iiiiiiiiii,,,,,,,,,,,,,,,iiiiiiiiiiiiiiiiii,,iiii,iiiiii                       
-                                          ,iiiiiiiiiiiiii,,,,,,,,,,,iiiiiiiiiiiiiiiiiiiii,,,,,,iii,i                         
-                                      ,iii,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,iiiiiiiiiiiii,,,,,,,,,,i                        
-                                  ,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,iiiiiiiiiiiii,,,,,,,,,,i                      
-                              ,iiiiiiiiiiiiiii,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,,,,,,,i                     
-                          ,iiiiiiiiiiiiiiiiiiiiii,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,,,,,,,                   
-                        i,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,iiiiiiiiiiiiiiiiii,,,iiii                  
-                       i,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,iiiiiiiiiiiiiiiiii,iiiiiii                 
-                       ,,iiiiiiiiiiiii,,iiiiiiii,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,iiiiiiiii                  
-                       ,,iiiiiiii,,,,iiiiiiiiiiii,,,,iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii,,,iiiiiiiiii,i                  
-                       i,iii,,,,,iiiiiiiiiii,i,,,iiiiiiiiiiiiiii,,,iiiiiiiiiiiiiiiiiiii,,,iiiiiiiiiiii  ,,,,                 
-                        ,,,,,iiiiiiiiiii     ,iiiiiiiiiiiiii,,,ii,   iiiiiiiiiii,,,iiiiiiiiiiiiiii,        ,,,               
-                       ,,,,iiiiiiiii         ,iiiiiiiiii,,             iiiiiiiiiiiiiiiiiiiiiii,,,          i ,i              
-                       i,,,iiiii             ,,                        iiiiiiiiiiiiiiiiiii,,,,            i  ,,,             
-                       i,,i,                 ,,i                       ,iiiiiiiiiiiii,   i,             i      ,,i           
-                                              ,,                        iiiiii,            ,          i         ,i           
-                       i ,  iii, iiii iiiiiii ,,i                                             i     i            ,i          
-                         i                    ,,,                                               i i                ,i        
-                       i  ,                    ,,i                                               ,                  i        
-                       i                       ,,,                                               ,           ,  ,     ,      
-                      i ii                      ,,i                                              ,        ,  ,, ,      ,     
-                     , ,  i                      ,i                                                  ,i  ,,  i           ,   
-                  .                               ,,                                              i   ,,i,i                , 
-                ,          i                     ,,i                                              ,                         ,
-               ,  ,,,,,,,i,,i i,,,, ,,i, ,  ,,                                                   ,  ,  , i,i i,i, ,,  ,,   ,  
+
+           ▒▒▒            ███████                 ░░░░░░░░░░░                      ░░░
+         ▒▒▒▒▒          ████████████            ░░░░░░░░░░░░░░░                  ░░░░░
+       ▒▒▒▒▒▒▒         ████      ████          ░░░░░       ░░░░░                ░░░░░░
+     ▒▒▒▒▒▒▒▒▒        ████         ███         ░░░░          ░░░░              ░░░ ░░░
+   ▒▒▒▒▒  ▒▒▒▒       ████           ███         ░░           ░░░░            ░░░░  ░░░
+   ▒▒     ▒▒▒▒       ███            ███                      ░░░░           ░░░░   ░░░
+          ▒▒▒▒       ███            ███                    ░░░░░           ░░░░    ░░░
+          ▒▒▒▒       ███            ███                  ░░░░░           ░░░░      ░░░
+          ▒▒▒▒       ███            ███               ░░░░░░            ░░░░       ░░░
+          ▒▒▒▒       ███            ███             ░░░░░░             ░░░         ░░░
+          ▒▒▒▒       ████          ████           ░░░░░               ░░░░░░░░░░░░░░░░░░░░
+          ▒▒▒▒        ███         ████          ░░░░                               ░░░
+          ▒▒▒▒         ███       ████          ░░░░                                ░░░
+          ▒▒▒▒          ████████████         ░░░░░░░░░░░░░░░░░░░░                  ░░░
+           ▒▒              ██████            ░░░░░░░░░░░░░░░░░░░░                  ░░
+
+
+         █████████  █████                                  ██████   ██████          ███
+        ███░░░░░███░░███                                  ░░██████ ██████          ░███
+       ░███    ░░░  ░███████    ██████  █████ ███ █████    ░███░█████░███   ██████ ░███
+       ░░█████████  ░███░░███  ███░░███░░███ ░███░░███     ░███░░███ ░███  ███░░███░███
+        ░░░░░░░░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███     ░███ ░░░  ░███ ░███████ ░███
+        ███    ░███ ░███ ░███ ░███ ░███ ░░███████████      ░███      ░███ ░███░░░  ░░░
+       ░░█████████  ████ █████░░██████   ░░████░████       █████     █████░░██████  ███
+        ░░░░░░░░░  ░░░░ ░░░░░  ░░░░░░     ░░░░ ░░░░       ░░░░░     ░░░░░  ░░░░░░  ░░░
+
+                                                                    --  永无bug

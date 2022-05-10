@@ -10,7 +10,7 @@ import java.io.IOException;
 @Service
 public class ImageServiceImpl implements ImageSerice {
     // 文件保存的路径
-    private String uploaddir = "F:\\桌面\\imgs";
+    private String uploaddir = "F:\\桌面\\BackAndFront\\house-back\\src\\main\\resources\\static";
     @Override
     public String uploadImage(MultipartFile mfile) {
         // 返回的信息

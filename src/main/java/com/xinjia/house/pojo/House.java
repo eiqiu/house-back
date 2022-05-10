@@ -9,9 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class House {
-    private String[] type;
     private int owner_id;
-    private int mediator_id;
     private int category_id;
     private String        house_title;
     private String        house_address;
@@ -33,5 +31,6 @@ public class House {
     private String        surrounding_facilities;
     private String        house_description;
     private boolean        house_state;
+    private String[]        house_tags;
 
 }

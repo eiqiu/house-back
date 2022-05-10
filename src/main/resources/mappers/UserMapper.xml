@@ -3,8 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinjia.house.dao.UserDao">
-    <select id="listUser" resultType="com.xinjia.house.pojo.User">
+    <select id="checkUser" resultType="com.xinjia.house.pojo.User">
         select *
-        from db_house.user
+        from db_house.user where user_account=#{user_account} and user_password=#{user_password}
+    </select>
+    <insert id="registerUser" parameterType="com.xinjia.house.pojo.User">
+        insert into db_house.user(user_password,user_account,user_name)
+            values (#{user_password},#{user_account},#{user_name})
+    </insert>
+    <select id="ifExistUser" resultType="java.lang.Boolean">
+        <![CDATA[select * from db_house.user where user_account=#{user_account}]]>
     </select>
 </mapper>

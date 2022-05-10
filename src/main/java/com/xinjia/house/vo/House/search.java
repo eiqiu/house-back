@@ -1,4 +1,4 @@
-package com.xinjia.house.vo.User;
+package com.xinjia.house.vo.House;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserVo {
-    private String user_account;
-    private String user_password;
+public class search {
+    String searchWord;
 }

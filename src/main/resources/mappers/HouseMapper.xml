@@ -3,8 +3,94 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinjia.house.dao.HouseDao">
+    <resultMap id="houseVo" type="com.xinjia.house.vo.House.HouseVo">
+        <result column="house_id" property="house_id"/>
+        <result column="owner_id" property="owner_id"/>
+        <result column="category_id" property="category_id"/>
+        <result column="house_title" property="house_title"/>
+        <result column="house_address" property="house_address"/>
+        <result column="house_price" property="house_price"/>
+        <result column="bargain" property="bargain"/>
+        <result column="publish_time" property="publish_time"/>
+        <result column="house_area" property="house_area"/>
+        <result column="house_type" property="house_type"/>
+        <result column="house_structure" property="house_structure"/>
+        <result column="building_type" property="building_type"/>
+        <result column="building_structure" property="building_structure"/>
+        <result column="house_towards" property="house_towards"/>
+        <result column="house_decoration" property="house_decoration"/>
+        <result column="house_ladder" property="house_ladder"/>
+        <result column="heating_mode" property="heating_mode"/>
+        <result column="elevator" property="elevator"/>
+        <result column="viewing_time" property="viewing_time"/>
+        <result column="transportation" property="transportation"/>
+        <result column="surrounding_facilities" property="surrounding_facilities"/>
+        <result column="house_description" property="house_description"/>
+        <result column="house_tags" property="house_tags"/>
+        <result column="house_state" property="house_state"/>
+        <result column="user_name" property="user_name"/>
+        <result column="user_tel" property="user_tel"/>
+        <result column="user_address" property="user_address"/>
+        <collection property="pictures" resultMap="picture"/>
+    </resultMap>
+    <resultMap id="picture" type="com.xinjia.house.pojo.HousePicture">
+        <result column="picture_id" property="picture_id"/>
+        <result column="house_id" property="house_id"/>
+        <result column="src" property="src"/>
+    </resultMap>
+    <select id="selectAllByPage" resultMap="houseVo" parameterType="com.xinjia.house.vo.Page.PageVo">
+        select * from db_house.house
+            left join db_house.house_picture on house.house_id = house_picture.house_id
+            left join db_house.user on house.owner_id = user.user_id
+        where 1=1
+        <if test="pageVo.categoryID == 1">
+            and house.hot = 1
+        </if>
+        <if test="pageVo.categoryID == 0">
+        </if>
+        <if test="pageVo.categoryID > 1">
+            and house.category_id = #{pageVo.categoryID}
+        </if>
+    </select>
+    <select id="getHouseById" resultMap="houseVo">
+        select * from db_house.house
+            left join db_house.house_picture on house.house_id = house_picture.house_id
+            left join db_house.user on house.owner_id = user.user_id
+        where house.house_id=#{house_id}
+    </select>
     <select id="getCategories" resultType="com.xinjia.house.pojo.Category">
         select *
         from db_house.category
     </select>
+    <select id="ifCollected" resultType="java.lang.Boolean">
+        <![CDATA[select * from db_house.collection where user_id=#{user_id} and house_id=#{house_id}]]>
+    </select>
+    <insert id="addHouse" parameterType="com.xinjia.house.pojo.House">
+        insert into db_house.house(owner_id, category_id, house_title, house_address, house_price, bargain,
+                                   publish_time, house_area, house_type, house_structure, building_type, building_structure,
+                                   house_towards, house_decoration, house_ladder, heating_mode, elevator, viewing_time,
+                                   transportation, surrounding_facilities, house_description, house_state, hot)
+        VALUES (#{owner_id},#{category_id},#{house_title},#{house_address},#{house_price},#{bargain},#{publish_time},#{house_area},#{house_type}
+        ,#{house_structure},#{building_type},#{building_structure},#{house_towards},#{house_decoration},#{house_ladder},#{heating_mode},#{elevator},#{viewing_time},
+                #{transportation},#{surrounding_facilities},#{house_description},#{house_state},0)
+    </insert>
+    <delete id="deleteCollectionHouse" parameterType="com.xinjia.house.pojo.Collection">
+        delete from db_house.collection where user_id=#{user_id} and house_id=#{house_id}
+    </delete>
+    <select id="checkCollectionHouse" resultType="com.xinjia.house.pojo.Collection">
+        select *
+        from db_house.collection where user_id=#{user_id} and house_id=#{house_id}
+    </select>
+    <insert id="addCollectionHouse" parameterType="com.xinjia.house.pojo.Collection">
+        insert into db_house.collection(user_id,house_id) value (#{user_id},#{house_id})
+    </insert>
+<!--    模糊查询-->
+    <select id="searchHouse" resultType="com.xinjia.house.pojo.House" parameterType="String">
+        select * from db_house.house
+        where 1=1
+        <if test="searchWord != null and searchWord != ''">
+            and house_title || house_address like '%'||#{searchWord}||'%'
+        </if>
+    </select>
+
 </mapper>
