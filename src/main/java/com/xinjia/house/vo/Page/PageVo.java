@@ -14,5 +14,10 @@ public class PageVo {
     private int pageSize;
     // 查询分类
     private int categoryID;
+    // 搜索关键字
     private String keywords;
+    // 收藏
+    private int collected_user_id;
+    // 我的房屋
+    private int myHouse_user_id;
 }

@@ -61,17 +61,6 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
-		<!--二维码依赖-->
-		<dependency>
-			<groupId>com.google.zxing</groupId>
-			<artifactId>javase</artifactId>
-			<version>3.4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.zxing</groupId>
-			<artifactId>core</artifactId>
-			<version>3.4.0</version>
-		</dependency>
 		<!--mybatis-->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
@@ -109,6 +98,7 @@
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>**/*.png</include>
+					<include>**/*.jpg</include>
 					<include>**/*.yml</include>
 					<include>**/*.txt</include>
 					<include>**/*.xml</include>

@@ -3,5 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinjia.house.dao.ImageDao">
-
+    <!-- 获取刚刚插入的房屋ID -->
+    <select id="getLastHouseId" resultType="int">
+        select house_id from db_house.house order by house_id desc limit 1
+    </select>
+    <insert id="addHousePictures" parameterType="java.util.List">
+        insert into db_house.house_picture(picture_id, house_id, src)
+        values
+        <foreach collection="list" item="item" index="inded" separator=",">
+            (#{item.picture_id},#{item.house_id},#{item.src})
+        </foreach>
+    </insert>
+    <delete id="deleteHousePictures">
+        delete from db_house.house_picture
+        where house_id=#{house_id}
+    </delete>
 </mapper>

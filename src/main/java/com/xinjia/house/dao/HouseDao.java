@@ -10,16 +10,30 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Mapper
 @Repository
 public interface HouseDao {
+    List<HouseVo> searchHouse(@Param("pageVo") PageVo pageVo);
+
     void addHouse(House house);
-    public List<Category> getCategories();
-    public HouseVo getHouseById(@Param("house_id") int house_id);
-    public Boolean ifCollected(@Param("user_id")int user_id, @Param("house_id")int house_id);
-    public void deleteCollectionHouse(@Param("user_id") int user_id,@Param("house_id")int house_id);
-    public Collection checkCollectionHouse(@Param("user_id") int user_id,@Param("house_id")int house_id);
-    public void addCollectionHouse(@Param("user_id") int user_id,@Param("house_id") int house_id);
-    public List<House> searchHouse(String searchWord);
-    public List<HouseVo> selectAllByPage(@Param("pageVo") PageVo pageVo);
+
+    void modifyHouse(House house);
+
+    List<Category> getCategories();
+
+    HouseVo getHouseById(@Param("house_id") int house_id);
+
+    Boolean ifCollected(@Param("user_id") int user_id, @Param("house_id") int house_id);
+
+    void deleteCollectionHouse(@Param("user_id") int user_id, @Param("house_id") int house_id);
+
+    void addCollectionHouse(@Param("collection") Collection collection);
+
+    List<HouseVo> selectAllByPage(@Param("pageVo") PageVo pageVo);
+
+    List<HouseVo> getCollection(@Param("user_id") int user_id);
+
+    List<HouseVo> getMyHouse(@Param("user_id") int user_id);
+
 }

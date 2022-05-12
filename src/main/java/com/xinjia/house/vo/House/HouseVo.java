@@ -34,7 +34,6 @@ public class HouseVo {
     private String        transportation;
     private String        surrounding_facilities;
     private String        house_description;
-    private String          house_tags;
     private boolean        house_state;
     private String          user_name;
     private String          user_tel;

@@ -26,7 +26,6 @@
         <result column="transportation" property="transportation"/>
         <result column="surrounding_facilities" property="surrounding_facilities"/>
         <result column="house_description" property="house_description"/>
-        <result column="house_tags" property="house_tags"/>
         <result column="house_state" property="house_state"/>
         <result column="user_name" property="user_name"/>
         <result column="user_tel" property="user_tel"/>
@@ -38,11 +37,13 @@
         <result column="house_id" property="house_id"/>
         <result column="src" property="src"/>
     </resultMap>
+    <!-- 通过分类查询房屋 -->
     <select id="selectAllByPage" resultMap="houseVo" parameterType="com.xinjia.house.vo.Page.PageVo">
-        select * from db_house.house
-            left join db_house.house_picture on house.house_id = house_picture.house_id
-            left join db_house.user on house.owner_id = user.user_id
-        where 1=1
+        select *
+        from db_house.house
+                     left join db_house.house_picture on house.house_id = house_picture.house_id
+                     left join db_house.user on house.owner_id = user.user_id
+                where 1 = 1
         <if test="pageVo.categoryID == 1">
             and house.hot = 1
         </if>
@@ -51,46 +52,106 @@
         <if test="pageVo.categoryID > 1">
             and house.category_id = #{pageVo.categoryID}
         </if>
+        group by db_house.house.house_id
     </select>
+    <!-- 查询单一房屋 -->
     <select id="getHouseById" resultMap="houseVo">
-        select * from db_house.house
-            left join db_house.house_picture on house.house_id = house_picture.house_id
-            left join db_house.user on house.owner_id = user.user_id
-        where house.house_id=#{house_id}
+        select *
+        from db_house.house
+                     left join db_house.house_picture on house.house_id = house_picture.house_id
+                     left join db_house.user on house.owner_id = user.user_id
+        where house.house_id = #{house_id}
     </select>
+    <!-- 模糊查询房屋 -->
+    <select id="searchHouse" parameterType="com.xinjia.house.vo.Page.PageVo" resultMap="houseVo">
+        select *
+        from db_house.house
+                     left join db_house.house_picture on house.house_id = house_picture.house_id
+                     left join db_house.user on house.owner_id = user.user_id
+        where house.house_title like '%${pageVo.keywords}%'
+        group by db_house.house.house_id
+    </select>
+    <!-- 获取分类列表 -->
     <select id="getCategories" resultType="com.xinjia.house.pojo.Category">
         select *
         from db_house.category
     </select>
+    <!-- 是否收藏 -->
     <select id="ifCollected" resultType="java.lang.Boolean">
-        <![CDATA[select * from db_house.collection where user_id=#{user_id} and house_id=#{house_id}]]>
+        <![CDATA[
+        select *
+        from db_house.collection
+        where user_id = #{user_id}
+          and house_id = #{house_id}
+        ]]>
     </select>
+    <!-- 添加房屋 -->
     <insert id="addHouse" parameterType="com.xinjia.house.pojo.House">
         insert into db_house.house(owner_id, category_id, house_title, house_address, house_price, bargain,
-                                   publish_time, house_area, house_type, house_structure, building_type, building_structure,
+                                   publish_time, house_area, house_type, house_structure, building_type,
+                                   building_structure,
                                    house_towards, house_decoration, house_ladder, heating_mode, elevator, viewing_time,
                                    transportation, surrounding_facilities, house_description, house_state, hot)
-        VALUES (#{owner_id},#{category_id},#{house_title},#{house_address},#{house_price},#{bargain},#{publish_time},#{house_area},#{house_type}
-        ,#{house_structure},#{building_type},#{building_structure},#{house_towards},#{house_decoration},#{house_ladder},#{heating_mode},#{elevator},#{viewing_time},
-                #{transportation},#{surrounding_facilities},#{house_description},#{house_state},0)
+        VALUES (#{owner_id}, #{category_id}, #{house_title}, #{house_address}, #{house_price}, #{bargain},
+                #{publish_time}, #{house_area}, #{house_type}
+                       , #{house_structure}, #{building_type}, #{building_structure}, #{house_towards},
+                #{house_decoration},
+                #{house_ladder}, #{heating_mode}, #{elevator}, #{viewing_time},
+                #{transportation}, #{surrounding_facilities}, #{house_description}, #{house_state}, 0)
     </insert>
-    <delete id="deleteCollectionHouse" parameterType="com.xinjia.house.pojo.Collection">
-        delete from db_house.collection where user_id=#{user_id} and house_id=#{house_id}
-    </delete>
-    <select id="checkCollectionHouse" resultType="com.xinjia.house.pojo.Collection">
+    <!-- 修改房屋 -->
+    <update id="modifyHouse" parameterType="com.xinjia.house.pojo.House">
+        update db_house.house
+        set house_title            = #{house_title},
+            house_address          = #{house_address},
+            house_price            = #{house_price},
+            house_price            = #{house_price},
+            publish_time           = #{publish_time},
+            house_area             = #{house_area},
+            house_type             = #{house_type},
+            house_structure        = #{house_structure},
+            building_type          = #{building_type},
+            building_structure     = #{building_structure},
+            house_towards          = #{house_towards},
+            house_decoration       = #{house_decoration},
+            house_ladder           = #{house_ladder},
+            heating_mode           = #{heating_mode},
+            elevator               = #{elevator},
+            viewing_time           = #{viewing_time},
+            transportation         = #{transportation},
+            surrounding_facilities = #{surrounding_facilities},
+            house_description      = #{house_description}
+        where house_id = #{house_id}
+    </update>
+    <!-- 获取收藏列表 -->
+    <select id="getCollection" resultMap="houseVo">
         select *
-        from db_house.collection where user_id=#{user_id} and house_id=#{house_id}
+        from db_house.house
+                     left join db_house.house_picture on house.house_id = house_picture.house_id
+                     left join db_house.user on house.owner_id = user.user_id
+        where db_house.house.house_id in
+              (SELECT house_id FROM db_house.collection WHERE db_house.collection.user_id = #{user_id})
+        group by db_house.house.house_id
     </select>
+    <!-- 获取我发布的房屋 -->
+    <select id="getMyHouse" resultMap="houseVo">
+        select *
+        from db_house.house
+                     left join db_house.house_picture on house.house_id = house_picture.house_id
+                     left join db_house.user on house.owner_id = user.user_id
+        where house.owner_id = #{user_id}
+        group by house.house_id
+    </select>
+    <!-- 收藏房屋 -->
     <insert id="addCollectionHouse" parameterType="com.xinjia.house.pojo.Collection">
-        insert into db_house.collection(user_id,house_id) value (#{user_id},#{house_id})
+        insert into db_house.collection(user_id, house_id, collection_time)
+        values (#{collection.user_id}, #{collection.house_id}, #{collection.collection_time})
     </insert>
-<!--    模糊查询-->
-    <select id="searchHouse" resultType="com.xinjia.house.pojo.House" parameterType="String">
-        select * from db_house.house
-        where 1=1
-        <if test="searchWord != null and searchWord != ''">
-            and house_title || house_address like '%'||#{searchWord}||'%'
-        </if>
-    </select>
-
+    <!-- 取消收藏房屋 -->
+    <delete id="deleteCollectionHouse" parameterType="com.xinjia.house.pojo.Collection">
+        delete
+        from db_house.collection
+        where user_id = #{user_id}
+          and house_id = #{house_id}
+    </delete>
 </mapper>

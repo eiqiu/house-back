@@ -12,6 +12,6 @@ import java.util.Date;
 public class Collection {
     private int collection_id;
     private int user_id;
-    private int houser_id;
+    private int house_id;
     private Date collection_time;
 }

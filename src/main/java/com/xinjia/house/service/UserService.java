@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface UserService {
     Boolean ifExistUser(String user_account);
+
     void registerUser(User user);
-    User checkUser(String user_account,String user_password);
+
+    User checkUser(String user_account, String user_password);
+
+    void modifyUser(User user);
 }

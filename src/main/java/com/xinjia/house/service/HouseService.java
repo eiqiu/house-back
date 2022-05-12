@@ -8,17 +8,28 @@ import com.xinjia.house.vo.House.HouseVo;
 import com.xinjia.house.vo.Page.PageVo;
 
 import java.util.List;
-import java.util.Map;
 
 public interface HouseService {
+    PageInfo<HouseVo> searchHouse(PageVo pageVo);
+
     void addHouse(House house);
-    public PageInfo<HouseVo> selectAllByPageInfo(PageVo pageVo);
-    public HouseVo getHouseById(int houseId);
-    public List<Category> getCategories();
-    public Boolean ifCollected(int userId, int houseId);
-    public void deleteCollectionHouse(int user_id,int house_id);
-    public Collection checkCollectionHouse(int user_id,int house_id);
-    public void addCollectionHouse(int user_id,int house_id);
-    public List<House> searchHouse(String searchWord);
-    public Map<String,Object> searchHouse(Integer pageNum,Integer pageSize,String searchWord);
+
+    void modifyHouse(House house);
+
+    PageInfo<HouseVo> selectAllByPageInfo(PageVo pageVo);
+
+    HouseVo getHouseById(int houseId);
+
+    List<Category> getCategories();
+
+    Boolean ifCollected(int userId, int houseId);
+
+    void deleteCollectionHouse(int user_id, int house_id);
+
+    void addCollectionHouse(Collection collection);
+
+    PageInfo<HouseVo> getCollection(PageVo pageVo);
+
+    PageInfo<HouseVo> getMyHouse(PageVo pageVo);
+
 }

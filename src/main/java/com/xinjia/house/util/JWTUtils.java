@@ -13,17 +13,18 @@ public class JWTUtils {
 
     /**
      * 生产token
+     *
      * @param map 传入payload
      * @return token
      */
-    public static String getToken(Map<String,String> map) {
+    public static String getToken(Map<String, String> map) {
         JWTCreator.Builder builder = JWT.create();
-        map.forEach((k,v)->{
-            builder.withClaim(k,v);
+        map.forEach((k, v) -> {
+            builder.withClaim(k, v);
         });
         //设置过期时间，默认30分钟
         Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.MINUTE,30);
+        instance.add(Calendar.MINUTE, 30);
         builder.withExpiresAt(instance.getTime());
 
         return builder.sign(Algorithm.HMAC256(TOKEN)).toString();
@@ -31,13 +32,14 @@ public class JWTUtils {
 
     /**
      * 验证token
+     *
      * @param token
      */
-    public static void verify(String token){
+    public static void verify(String token) {
         JWT.require(Algorithm.HMAC256(TOKEN)).build().verify(token);
     }
 
-    public static DecodedJWT getToken(String token){
+    public static DecodedJWT getToken(String token) {
         return JWT.require(Algorithm.HMAC256(TOKEN)).build().verify(token);
     }
 }

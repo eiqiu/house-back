@@ -1,6 +1,6 @@
 package com.xinjia.house.controller;
 
-import com.xinjia.house.service.ImageSerice;
+import com.xinjia.house.service.ImageService;
 import com.xinjia.house.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,22 +17,22 @@ import java.io.IOException;
 @RestController
 public class ImageController {
     @Autowired
-    private ImageSerice imageSerice;
+    private ImageService imageService;
 
     @ApiOperation("获取base64图片")
     @RequestMapping(value = "/getImage", method = RequestMethod.POST)
     public Result<String> getImage(@RequestBody String path) throws IOException {
-        return Result.success(200,"成功",ImageToBase64(path));
+        return Result.success(200, "成功", ImageToBase64(path));
     }
 
     @ApiOperation("上传图片")
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String uploadImage(@RequestPart MultipartFile mfile){
-        return imageSerice.uploadImage(mfile);
+    public String uploadImage(@RequestPart MultipartFile mfile) {
+        return imageService.uploadImage(mfile);
     }
 
     public String ImageToBase64(String path) throws IOException {
-        String path1 = "E:/imgs/"+path;
+        String path1 = "E:/imgs/" + path;
         System.out.println("4564897");
         FileInputStream fileInputStream = new FileInputStream(path1);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();

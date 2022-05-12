@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao {
     Boolean ifExistUser(@Param("user_account") String user_account);
+
     void registerUser(User user);
+
     User checkUser(@Param("user_account") String user_account, @Param("user_password") String user_password);
+
+    void modifyUser(User user);
 }

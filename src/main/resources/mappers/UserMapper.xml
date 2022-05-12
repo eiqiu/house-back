@@ -3,15 +3,34 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinjia.house.dao.UserDao">
+    <!-- 用户登陆 -->
     <select id="checkUser" resultType="com.xinjia.house.pojo.User">
         select *
-        from db_house.user where user_account=#{user_account} and user_password=#{user_password}
+        from db_house.user
+        where user_account = #{user_account}
+          and user_password = #{user_password}
     </select>
+    <!-- 注册 -->
     <insert id="registerUser" parameterType="com.xinjia.house.pojo.User">
-        insert into db_house.user(user_password,user_account,user_name)
-            values (#{user_password},#{user_account},#{user_name})
+        insert into db_house.user(user_password, user_account, user_name)
+        values (#{user_password}, #{user_account}, #{user_name})
     </insert>
+    <!-- 用户是否被注册 -->
     <select id="ifExistUser" resultType="java.lang.Boolean">
-        <![CDATA[select * from db_house.user where user_account=#{user_account}]]>
+        <![CDATA[
+        select *
+        from db_house.user
+        where user_account = #{user_account}
+        ]]>
     </select>
+    <!-- 修改个人信息 -->
+    <update id="modifyUser" parameterType="com.xinjia.house.pojo.User">
+        update db_house.user
+        set user_name=#{user_name},
+            user_tel=#{user_tel},
+            user_sex=#{user_sex},
+            user_age=#{user_age},
+            user_address=#{user_address}
+        where user_id = #{user_id}
+    </update>
 </mapper>
