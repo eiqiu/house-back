@@ -13,8 +13,7 @@ public class JWTUtils {
 
     /**
      * 生产token
-     *
-     * @param map 传入payload
+     * @param map
      * @return token
      */
     public static String getToken(Map<String, String> map) {

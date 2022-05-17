@@ -33,4 +33,8 @@
             user_address=#{user_address}
         where user_id = #{user_id}
     </update>
+    <!-- 获取用户信息 -->
+    <select id="getUserById" resultType="com.xinjia.house.pojo.User">
+        select * from db_house.user where user_id=#{user_id}
+    </select>
 </mapper>

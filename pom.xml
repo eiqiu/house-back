@@ -102,6 +102,7 @@
 					<include>**/*.yml</include>
 					<include>**/*.txt</include>
 					<include>**/*.xml</include>
+					<include>**/*.md</include>
 				</includes>
 				<filtering>false</filtering>
 			</resource>

@@ -16,6 +16,8 @@ public interface HouseService {
 
     void modifyHouse(House house);
 
+    void deleteMyHouse(int house_id);
+
     PageInfo<HouseVo> selectAllByPageInfo(PageVo pageVo);
 
     HouseVo getHouseById(int houseId);
@@ -32,4 +34,7 @@ public interface HouseService {
 
     PageInfo<HouseVo> getMyHouse(PageVo pageVo);
 
+    void addClick(int house_id);
+
+    void modifyHotHouse();
 }

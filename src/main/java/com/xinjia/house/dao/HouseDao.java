@@ -20,6 +20,8 @@ public interface HouseDao {
 
     void modifyHouse(House house);
 
+    void deleteMyHouse(@Param("house_id") int house_id);
+
     List<Category> getCategories();
 
     HouseVo getHouseById(@Param("house_id") int house_id);
@@ -36,4 +38,7 @@ public interface HouseDao {
 
     List<HouseVo> getMyHouse(@Param("user_id") int user_id);
 
+    void addClick(@Param("house_id") int house_id);
+
+    void modifyHotHouse();
 }

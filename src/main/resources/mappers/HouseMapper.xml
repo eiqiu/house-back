@@ -123,6 +123,12 @@
             house_description      = #{house_description}
         where house_id = #{house_id}
     </update>
+    <!-- 删除我的房屋 -->
+    <delete id="deleteMyHouse">
+        delete
+        from db_house.house
+        where house_id = #{house_id}
+    </delete>
     <!-- 获取收藏列表 -->
     <select id="getCollection" resultMap="houseVo">
         select *
@@ -154,4 +160,21 @@
         where user_id = #{user_id}
           and house_id = #{house_id}
     </delete>
+    <!-- 增加点击量 -->
+    <update id="addClick">
+        update db_house.house
+        set click_num=click_num + 1
+        where house_id = #{house_id}
+    </update>
+    <!-- 修改是否热门 -->
+    <update id="modifyHotHouse">
+        update db_house.house
+        set hot = 1
+        where house_id in (select t.house_id
+                           from (select house_id
+                                 from house
+                                 where click_num > 1000
+                                 order by click_num desc
+                                 limit 10) as t)
+    </update>
 </mapper>

@@ -36,7 +36,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void modifyUser(User user) {
+    public User modifyUser(User user) {
         userDao.modifyUser(user);
+        return userDao.getUserById(user.getUser_id());
     }
 }

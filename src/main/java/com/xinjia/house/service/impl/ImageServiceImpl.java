@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -51,23 +52,25 @@ public class ImageServiceImpl implements ImageService {
     public void uploadImages(MultipartFile[] files) {
         int house_id = imageDao.getLastHouseId();
         List<HousePicture> pictures = new ArrayList<HousePicture>();
-        String resultstr = "上传文件为空";
         if (files == null) {
             return;
         }
         // 保存至本地
         for (MultipartFile file : files) {
+            String fileName = UUID.randomUUID().toString();
             String originalFilename = file.getOriginalFilename();
-            HousePicture housePicture = new HousePicture(0, house_id, originalFilename);
+            String type = originalFilename.substring(originalFilename.lastIndexOf("."));
+            fileName += type;
+//            System.out.println(fileName);
+            HousePicture housePicture = new HousePicture(0, house_id, fileName);
             pictures.add(housePicture);
             File uploadpath = new File(uploaddir);
             if (!uploadpath.exists()) {
                 uploadpath.mkdirs();
             }
-            File destfile = new File(uploadpath, originalFilename);
+            File destfile = new File(uploadpath, fileName);
             try {
                 file.transferTo(destfile);
-                resultstr = "上传成功";
             } catch (IOException e) {
                 e.printStackTrace();
             }

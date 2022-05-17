@@ -39,6 +39,11 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
+    public void deleteMyHouse(int house_id) {
+        houseDao.deleteMyHouse(house_id);
+    }
+
+    @Override
     public PageInfo<HouseVo> selectAllByPageInfo(PageVo pageVo) {
         return PageHelperUtils.getPageInfo(pageVo.getPageNum(), pageVo.getPageSize(), houseDao.selectAllByPage(pageVo));
     }
@@ -84,6 +89,19 @@ public class HouseServiceImpl implements HouseService {
     @Override
     public PageInfo<HouseVo> getMyHouse(PageVo pageVo) {
         return PageHelperUtils.getPageInfo(pageVo.getPageNum(), pageVo.getPageSize(), houseDao.getMyHouse(pageVo.getMyHouse_user_id()));
+    }
+
+    @Override
+    public void addClick(int house_id) {
+        houseDao.addClick(house_id);
+    }
+
+    /**
+     * 用于定时任务，修改热门商品
+     */
+    @Override
+    public void modifyHotHouse() {
+
     }
 
 }

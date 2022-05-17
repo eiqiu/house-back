@@ -15,4 +15,6 @@ public interface UserDao {
     User checkUser(@Param("user_account") String user_account, @Param("user_password") String user_password);
 
     void modifyUser(User user);
+
+    User getUserById(@Param("user_id")int user_id);
 }

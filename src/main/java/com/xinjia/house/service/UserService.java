@@ -12,5 +12,5 @@ public interface UserService {
 
     User checkUser(String user_account, String user_password);
 
-    void modifyUser(User user);
+    User modifyUser(User user);
 }

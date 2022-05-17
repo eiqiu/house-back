@@ -101,9 +101,24 @@ public class HouseController {
         return Result.success(200, "取消收藏成功", true);
     }
 
+    @ApiOperation("删除我的房屋")
+    @RequestMapping(value = "/deleteMyHouse", method = RequestMethod.POST)
+    public Result<Boolean> deleteMyhouse(@RequestBody Map<String, Object> reqMap){
+        int house_id = Integer.parseInt(reqMap.get("house_id").toString());
+        houseService.deleteMyHouse(house_id);
+        return Result.success(200,"删除成功", true);
+    }
+
     @ApiOperation("根据关键字搜索房屋")
     @RequestMapping(value = "/searchHouse", method = RequestMethod.POST)
     public Result<PageInfo<HouseVo>> searchHouse(@RequestBody PageVo pageVo) {
         return Result.success(200, "成功", houseService.searchHouse(pageVo));
+    }
+
+    @ApiOperation("增加用户点击量")
+    @RequestMapping(value = "/addClick", method = RequestMethod.POST)
+    public void addClick(@RequestBody Map<String, Object> reqMap){
+        int house_id = Integer.parseInt(reqMap.get("house_id").toString());
+        houseService.addClick(house_id);
     }
 }

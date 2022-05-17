@@ -54,9 +54,7 @@ public class UserController {
 
     @ApiOperation("修改个人信息")
     @RequestMapping(value = "/modifyUser", method = RequestMethod.POST)
-    public Result<String> modifyUser(@RequestBody User user) {
-        userService.modifyUser(user);
-        return Result.success(200, "修改成功", "ok");
+    public Result<User> modifyUser(@RequestBody User user) {
+        return Result.success(200, "修改成功", userService.modifyUser(user));
     }
-
 }
