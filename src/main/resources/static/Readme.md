@@ -11,7 +11,7 @@ Vue.js 2.6、Vue-Router、 Vuex、Element UI、axios、vue-markdown。
 ## 1、2后端技术栈：
 
 ```xml
-Springboot、Spring、Mybatis、JWT 。
+Springboot、Spring、Mybatis。
 ```
 
 ## 1、3数据库及管理工具：
