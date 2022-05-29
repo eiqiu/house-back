@@ -30,6 +30,9 @@
         <result column="user_name" property="user_name"/>
         <result column="user_tel" property="user_tel"/>
         <result column="user_address" property="user_address"/>
+        <result column="click_num" property="click_num"/>
+        <result column="user_age" property="user_age"/>
+        <result column="user_sex" property="user_sex"/>
         <collection property="pictures" resultMap="picture"/>
     </resultMap>
     <resultMap id="picture" type="com.xinjia.house.pojo.HousePicture">
@@ -43,7 +46,7 @@
         from db_house.house
                      left join db_house.house_picture on house.house_id = house_picture.house_id
                      left join db_house.user on house.owner_id = user.user_id
-                where 1 = 1
+                where house.house_state = 1
         <if test="pageVo.categoryID == 1">
             and house.hot = 1
         </if>
@@ -52,7 +55,7 @@
         <if test="pageVo.categoryID > 1">
             and house.category_id = #{pageVo.categoryID}
         </if>
-        group by db_house.house.house_id
+        and house.house_state = 1
     </select>
     <!-- 查询单一房屋 -->
     <select id="getHouseById" resultMap="houseVo">
@@ -68,7 +71,7 @@
         from db_house.house
                      left join db_house.house_picture on house.house_id = house_picture.house_id
                      left join db_house.user on house.owner_id = user.user_id
-        where house.house_title like '%${pageVo.keywords}%'
+        where house.house_title like '%${pageVo.keywords}%' and house.house_state=1
         group by db_house.house.house_id
     </select>
     <!-- 获取分类列表 -->
@@ -177,4 +180,25 @@
                                  order by click_num desc
                                  limit 10) as t)
     </update>
+    <!-- 修改房屋状态 -->
+    <update id="changeHouseState">
+        update db_house.house
+        set house_state = #{house_state}
+        where house_id = #{house_id}
+    </update>
+    <!-- 管理员获取房屋 -->
+    <select id="getAllHouse" resultMap="houseVo">
+        select *
+        from db_house.house
+                     left join db_house.house_picture on house.house_id = house_picture.house_id
+                     left join db_house.user on house.owner_id = user.user_id
+    </select>
+    <!-- 管理员搜索房屋 -->
+    <select id="adminSearchHouse" resultMap="houseVo">
+        select *
+        from db_house.house
+        left join db_house.house_picture on house.house_id = house_picture.house_id
+        left join db_house.user on house.owner_id = user.user_id
+        where house.house_title like '%${pageVo.keywords}%'
+    </select>
 </mapper>

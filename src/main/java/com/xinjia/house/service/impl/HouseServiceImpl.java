@@ -3,9 +3,11 @@ package com.xinjia.house.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xinjia.house.dao.HouseDao;
+import com.xinjia.house.dao.UserDao;
 import com.xinjia.house.pojo.Category;
 import com.xinjia.house.pojo.Collection;
 import com.xinjia.house.pojo.House;
+import com.xinjia.house.pojo.System;
 import com.xinjia.house.service.HouseService;
 import com.xinjia.house.util.PageHelperUtils;
 import com.xinjia.house.vo.House.HouseVo;
@@ -21,6 +23,9 @@ public class HouseServiceImpl implements HouseService {
     @Autowired
     private HouseDao houseDao;
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public PageInfo<HouseVo> searchHouse(PageVo pageVo) {
         PageHelper.startPage(pageVo.getPageNum(), pageVo.getPageSize());
@@ -30,6 +35,8 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public void addHouse(House house) {
+        //　将房屋状态设置为待审核
+        house.setHouse_state(System.TO_BE_REVIEWED.getStatusCode());
         houseDao.addHouse(house);
     }
 
@@ -101,7 +108,29 @@ public class HouseServiceImpl implements HouseService {
      */
     @Override
     public void modifyHotHouse() {
+        houseDao.modifyHotHouse();
+    }
+    @Override
+    public void changeHouseState(int house_id, int house_state, int user_id) {
+        // 修改状态
+        houseDao.changeHouseState(house_id,house_state);
+        // 向用户发送一条消息
+        if (house_state == 1){
+            // 审核通过
+            userDao.noticeUser(user_id,"您的房子审核通过！");
+        }else if (house_state == 2){
+            userDao.noticeUser(user_id, "您的房屋审核未通过！");
+        }
+    }
 
+    @Override
+    public PageInfo<HouseVo> getAllHouse(PageVo pageVo) {
+        return PageHelperUtils.getPageInfo(pageVo.getPageNum(), pageVo.getPageSize(), houseDao.getAllHouse(pageVo));
+    }
+
+    @Override
+    public PageInfo<HouseVo> adminSearchHouse(PageVo pageVo) {
+        return PageHelperUtils.getPageInfo(pageVo.getPageNum(), pageVo.getPageSize(), houseDao.adminSearchHouse(pageVo));
     }
 
 }

@@ -1,7 +1,10 @@
 package com.xinjia.house.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.xinjia.house.pojo.Message;
 import com.xinjia.house.pojo.User;
 import com.xinjia.house.service.UserService;
+import com.xinjia.house.vo.Page.PageVo;
 import com.xinjia.house.vo.Result;
 import com.xinjia.house.vo.User.UserVo;
 import io.swagger.annotations.Api;
@@ -56,5 +59,19 @@ public class UserController {
     @RequestMapping(value = "/modifyUser", method = RequestMethod.POST)
     public Result<User> modifyUser(@RequestBody User user) {
         return Result.success(200, "修改成功", userService.modifyUser(user));
+    }
+
+    @ApiOperation("获取消息")
+    @RequestMapping(value = "/getMessage", method = RequestMethod.POST)
+    public Result<PageInfo<Message>> getMessage(@RequestBody PageVo pageVo){
+        return Result.success(200,"成功",userService.getMessages(pageVo));
+    }
+
+    @ApiOperation("修改消息状态")
+    @RequestMapping(value = "/changeMessage", method = RequestMethod.POST)
+    public Result<Boolean> changeMessageState(@RequestBody Map<String, Object> reqMap){
+        int user_id = Integer.parseInt(reqMap.get("user_id").toString());
+        userService.changeMessageState(user_id);
+        return Result.success(200,"成功",true);
     }
 }

@@ -37,4 +37,33 @@
     <select id="getUserById" resultType="com.xinjia.house.pojo.User">
         select * from db_house.user where user_id=#{user_id}
     </select>
+    <!-- 获取消息列表 -->
+    <select id="getMessages" resultType="com.xinjia.house.pojo.Message">
+        select * from db_house.message where user_id=#{user_id} order by message_time desc
+    </select>
+    <!-- 修改消息状态 -->
+    <update id="changeMessageState">
+        update db_house.message set message_state=2
+        where user_id=#{user_id}
+    </update>
+    <!-- 通知用户 -->
+    <insert id="noticeUser">
+        insert into db_house.message(user_id,message_content)
+        values (#{user_id},#{msg})
+    </insert>
+    <select id="checkAllUser" resultType="com.xinjia.house.pojo.User">
+        select * from db_house.user
+    </select>
+
+    <select id="searchUserByKeyWord" resultType="com.xinjia.house.pojo.User">
+        select *
+        from db_house.user
+        where user_name like '%${keyWords}%'
+    </select>
+
+    <delete id="deleteUser">
+        delete
+        from db_house.user
+        where user_id = #{user_id}
+    </delete>
 </mapper>

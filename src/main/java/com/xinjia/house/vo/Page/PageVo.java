@@ -20,4 +20,5 @@ public class PageVo {
     private int collected_user_id;
     // 我的房屋
     private int myHouse_user_id;
+    private int user_id;
 }

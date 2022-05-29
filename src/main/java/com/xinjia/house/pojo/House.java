@@ -31,6 +31,6 @@ public class House {
     private String        transportation;
     private String        surrounding_facilities;
     private String        house_description;
-    private boolean        house_state;
+    private int        house_state;
     private boolean         hot;
 }

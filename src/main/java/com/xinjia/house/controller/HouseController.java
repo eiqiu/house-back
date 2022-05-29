@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 
-@Api(tags = "房屋的各类信息接口")
+@Api(tags = "房屋")
 @RestController
 @RequestMapping("/house")
 public class HouseController {

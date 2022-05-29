@@ -37,4 +37,10 @@ public interface HouseService {
     void addClick(int house_id);
 
     void modifyHotHouse();
+
+    void changeHouseState(int house_id, int house_state, int user_id);
+
+    PageInfo<HouseVo> getAllHouse(PageVo pageVo);
+
+    PageInfo<HouseVo> adminSearchHouse(PageVo pageVo);
 }

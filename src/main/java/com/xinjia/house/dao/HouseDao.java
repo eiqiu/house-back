@@ -41,4 +41,10 @@ public interface HouseDao {
     void addClick(@Param("house_id") int house_id);
 
     void modifyHotHouse();
+
+    void changeHouseState(@Param("house_id") int house_id, @Param("house_state") int house_state);
+
+    List<HouseVo> getAllHouse(@Param("pageVo") PageVo pageVo);
+
+    List<HouseVo> adminSearchHouse(@Param("pageVo") PageVo pageVo);
 }
